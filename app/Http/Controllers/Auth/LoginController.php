@@ -21,11 +21,13 @@ class LoginController extends Controller
 
         $credentials = request(['email', 'password']);
         if (!Auth::attempt($credentials)) {
-
             $this->unauthorized();
         }
 
         $user = $request->user();
+        if (!$user) {
+            return $this->unauthorized('User not found');
+        }
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->plainTextToken;
 

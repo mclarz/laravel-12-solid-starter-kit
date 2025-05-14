@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,4 +18,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     // task routes
     Route::apiResource('tasks', \App\Http\Controllers\TaskController::class);
+
+    // logout
+    Route::delete('/logout', LogoutController::class)->name('logout');
 });

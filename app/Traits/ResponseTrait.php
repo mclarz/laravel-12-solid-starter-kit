@@ -14,7 +14,6 @@ trait ResponseTrait
     public function success($message = 'Success', $data = null, $code = 200)
     {
         $result = [];
-        $result['status'] = 'success';
 
         if ($message) {
             $result['message'] = $message;

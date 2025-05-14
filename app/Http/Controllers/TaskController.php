@@ -8,6 +8,7 @@ use App\Models\Task;
 use App\Services\TaskService;
 use App\Traits\ResponseTrait;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class TaskController extends Controller
 {
@@ -33,7 +34,7 @@ class TaskController extends Controller
     {
         try {
             $task = $taskService->createTask($request->validated());
-            return $this->success('Task created successfully', $task);
+            return $this->success('Task created successfully', $task, Response::HTTP_CREATED);
         } catch (\Exception $e) {
             return $this->serverError('Failed to create task: ' . $e->getMessage());
         }
