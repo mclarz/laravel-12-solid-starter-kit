@@ -21,7 +21,7 @@ class TaskController extends Controller
     {
         try {
             $tasks = $taskService->getAllTasks();
-            return $this->success($tasks);
+            return $this->success("Success", $tasks, 200);
         } catch (\Exception $e) {
             return $this->serverError('Failed to retrieve tasks', $e->getMessage());
         }
@@ -46,7 +46,7 @@ class TaskController extends Controller
     public function show(TaskService $taskService, string $id)
     {
         $task = $taskService->getTaskById($id);
-        return $this->success($task);
+        return $this->success("success", $task, 200);
     }
 
     /**

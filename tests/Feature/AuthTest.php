@@ -59,7 +59,7 @@ it('can logout an authenticated user', function () {
     $token = $user->createToken('auth-token')->plainTextToken;
 
     $response = $this->withHeader('Authorization', 'Bearer ' . $token)
-        ->postJson('/api/logout');
+        ->deleteJson('/api/logout');
 
     $response->assertOk()
         ->assertJson([
